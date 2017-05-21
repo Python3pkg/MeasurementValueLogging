@@ -20,15 +20,15 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import threading
-import devices as devicesModule
-import si
+from . import devices as devicesModule
+from . import si
 import serial
 import time
 import logging
 import random
 import copy
 import serial.tools.list_ports
-import Queue
+import queue
 
 class DeviceManager(object):
     """The DeviceManager manages devices.
@@ -58,7 +58,7 @@ class DeviceManager(object):
     def __init__(self):
         self._iterator = self._getIterator()
         self._start()
-        self.queue = Queue.Queue()
+        self.queue = queue.Queue()
 
     def _getIterator(self):
         i = 1
@@ -265,7 +265,7 @@ class DeviceManager(object):
             relCopy = copy.copy(config["subDevices"])
             # prevent RuntimeError: dictionary changed size during iteration
             
-            for subdeviceID, inputNumber in relCopy.iteritems():
+            for subdeviceID, inputNumber in relCopy.items():
                 self.closeDevice(subdeviceID)
 
             self.devices[deviceID].close()
@@ -407,7 +407,7 @@ class GetValuesThread(threading.Thread):
 
     def updateValue(self):
         # python3 incompatibility: iteritems
-        for deviceID, config in self.configs.iteritems():
+        for deviceID, config in self.configs.items():
             if self.stop_event.is_set():
                 break
 

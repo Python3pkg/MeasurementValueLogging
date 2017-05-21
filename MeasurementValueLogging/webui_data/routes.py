@@ -21,9 +21,9 @@ def getValues():
         deviceID, rv = dm.queue.get()
         lastValues[deviceID] = rv
 
-    return jsonify(displayvals = [x.value for x in lastValues.values()],
-        prefixes = [x.prefix for x in lastValues.values()],
-        units = [x.unit for x in lastValues.values()],
+    return jsonify(displayvals = [x.value for x in list(lastValues.values())],
+        prefixes = [x.prefix for x in list(lastValues.values())],
+        units = [x.unit for x in list(lastValues.values())],
         len = len(lastValues))
 
 def main():

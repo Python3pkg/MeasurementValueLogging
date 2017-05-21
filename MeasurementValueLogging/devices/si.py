@@ -155,7 +155,7 @@ _siPrefixValue = { 'y': 1e-24,  # yocto
                 'f': 1e-15,  # femto
                 'p': 1e-12,  # pico
                 'n': 1e-9,   # nano
-                u'µ': 1e-6,   # micro
+                'µ': 1e-6,   # micro
                 'm': 1e-3,   # milli
                 '' : 1e0,    #
                 'k': 1e3,    # kilo
@@ -173,7 +173,7 @@ _siPrefixName = { 'y': 'yocto',
                 'f': 'femto',
                 'p': 'pico',
                 'n': 'nano',
-                u'µ': 'micro',
+                'µ': 'micro',
                 'm': 'milli',
                 '' : '',
                 'k': 'kilo',
@@ -191,7 +191,7 @@ _siNamePrefix = {'yocto': 'y',
                 'femto': 'f',
                 'pico': 'p',
                 'nano': 'n',
-                'micro': u'µ',
+                'micro': 'µ',
                 'milli': 'm',
                 '': '',
                 'kilo': 'k',
@@ -209,7 +209,7 @@ _siValuePrefix = { 1e-24: 'y',
                 1e-15: 'f',
                 1e-12: 'p',
                 1e-9: 'n',
-                1e-6: u'µ',
+                1e-6: 'µ',
                 1e-3: 'm',
                 1e0: '',
                 1e3: 'k',

@@ -21,8 +21,8 @@
 
 """This module contains a console interface."""
 
-from devices.devicemanager import DeviceManager
-import devices.si as si
+from .devices.devicemanager import DeviceManager
+from . import devices.si as si
 import time
 import argparse
 
@@ -88,10 +88,10 @@ def main():
     try:
         while True:
             deviceID, rv = dm.queue.get()
-            print(u"{time}: {value} {factor}{unit}".format(
+            print(("{time}: {value} {factor}{unit}".format(
                 time=round(time.time() - starttime, 1),
                 value=rv.value, factor=rv.prefix, unit=rv.unit)
-            )
+            ))
             
     except KeyboardInterrupt:
         print("Closing")

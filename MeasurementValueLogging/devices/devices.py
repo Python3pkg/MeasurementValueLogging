@@ -20,7 +20,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
-import si
+from . import si
 import serial
 import re
 import time
@@ -438,10 +438,10 @@ class TecpelDMM8061(Device):
         def unit(self):
             r = ""
             if self.delta:
-                r += u"Δ"
+                r += "Δ"
 
             if self.ohm:
-                return r + u"Ω"
+                return r + "Ω"
             elif self.farad:
                 return r + "F"
             elif self.hertz:
@@ -451,7 +451,7 @@ class TecpelDMM8061(Device):
             elif self.ampere:
                 return r + "A"
             elif self.celsius:
-                return r + u"°C"
+                return r + "°C"
             elif self.duty_cycle:
                 return r + "%"
             else:
@@ -466,7 +466,7 @@ class TecpelDMM8061(Device):
             if self.nano:
                 return "n"
             elif self.micro:
-                return u"µ"
+                return "µ"
             elif self.milli:
                 return "m"
             elif self.kilo:

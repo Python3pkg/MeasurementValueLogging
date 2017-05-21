@@ -1,3 +1,3 @@
-import webui_data.routes
+from . import webui_data.routes
 
 webui_data.routes.main()

@@ -28,9 +28,9 @@ import subprocess
 import locale
 from PyQt4 import QtCore, QtGui, uic
 
-from devices.devicemanager import DeviceManager
-from devices import si
-import ui_data.qr
+from .devices.devicemanager import DeviceManager
+from .devices import si
+from . import ui_data.qr
 
 class NewDeviceDialog(QtGui.QDialog):
     """Dialog to add new devices."""
@@ -300,12 +300,12 @@ class DeviceSettingsDialog(QtGui.QDialog):
 
         try:
             rv = self.parent.rv
-            self.normalLabel.setText(u"{:n} {}{}".format(rv.value, rv.prefix, rv.unit))
+            self.normalLabel.setText("{:n} {}{}".format(rv.value, rv.prefix, rv.unit))
 
             crv = self.dm.calibrate(rv, self.calibration, self.unit.text())
             if self.roundCheckBox.isChecked():
                 crv = self.dm.round(crv, self.round.value())
-            self.calibratedLabel.setText(u"{:n} {}{}".format(crv.value, crv.prefix, crv.unit))
+            self.calibratedLabel.setText("{:n} {}{}".format(crv.value, crv.prefix, crv.unit))
 
         except AttributeError:
             self.normalLabel.setText(self.tr("No Value yet."))
@@ -494,19 +494,19 @@ class MainWindow(QtGui.QMainWindow):
 
                         # Index 0 --> "No device"
                         if xls200Popup.subdevice1ComboBox.currentIndex() != 0:
-                            sub1 = unicode(xls200Popup.subdevice1ComboBox.currentText())
+                            sub1 = str(xls200Popup.subdevice1ComboBox.currentText())
                             deviceID = self.dm.openSubdevice(sub1, xls200ID, 1)
                             sub1Widget = DisplayWidget(deviceID, self.dm, parent = self)
                             self.verticalLayout.addWidget(sub1Widget)
 
                         if xls200Popup.subdevice2ComboBox.currentIndex() != 0:
-                            sub2 = unicode(xls200Popup.subdevice2ComboBox.currentText())
+                            sub2 = str(xls200Popup.subdevice2ComboBox.currentText())
                             deviceID = self.dm.openSubdevice(sub2, xls200ID, 2)
                             sub2Widget = DisplayWidget(deviceID, self.dm, parent = self)
                             self.verticalLayout.addWidget(sub2Widget)
 
                         if xls200Popup.subdevice3ComboBox.currentIndex() != 0:
-                            sub3 = unicode(xls200Popup.subdevice3ComboBox.currentText())
+                            sub3 = str(xls200Popup.subdevice3ComboBox.currentText())
                             deviceID = self.dm.openSubdevice(sub3, xls200ID, 3)
                             sub3Widget = DisplayWidget(deviceID, self.dm, parent = self)
                             self.verticalLayout.addWidget(sub3Widget)
